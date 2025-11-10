@@ -1,203 +1,144 @@
-import Image from "next/image";
+import Link from 'next/link';
+import { projects } from '@/lib/projects';
+import ReviewWallCompact from '@/components/ReviewWallCompact';
+import WordRotate from '@/components/WordRotate';
+import PortfolioTabs from '@/components/PortfolioTabs';
 
-export const metadata = {
-  title: "Realtime Analytics — Voice & Chat Ops | CloudQor",
-  description:
-    "Sub-second KPIs, queue drilldowns, and anomaly alerts for AI contact centers. Built with Next.js, stream processing, and a columnar warehouse.",
-};
+export const metadata = { title: 'Portfolio — CloudQor' };
 
-const GALLERY = [
-  "/images/projects/realtime-analytics-dashboard/ui-1.jpg",
-  "/images/projects/realtime-analytics-dashboard/ui-2.jpg",
-//   "/images/projects/realtime-analytics-dashboard/ui-3.jpg",
-];
+const WORDS = ['AI Agents', 'Cloud Infra', 'Voice Assistants', 'Growth Engines', 'Analytics'];
+const TAB_ORDER = ['AI', 'Python', 'Flask', 'Next.js', 'Cloud', 'Security', 'Analytics'];
 
-export default function Page() {
+// Brand colors
+const BRAND_BLUE = '#0B49B6';
+const BRAND_YELLOW = '#F2C21A';
+
+export default function PortfolioPage() {
   return (
-    <section className="relative max-w-6xl mx-auto">
-      {/* bg accents */}
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -top-20 -left-24 h-64 w-64 rounded-full blur-3xl opacity-25 bg-gradient-to-tr from-sky-300 via-blue-400 to-indigo-400" />
-        <div className="absolute -bottom-20 -right-24 h-64 w-64 rounded-full blur-3xl opacity-25 bg-gradient-to-tr from-emerald-300 via-cyan-400 to-blue-400" />
-      </div>
-
+    <section className="max-w-7xl mx-auto px-4 md:px-8 lg:px-10 space-y-14 md:space-y-20">
       {/* HERO */}
-      <header className="mb-10">
-        <div className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-sm bg-white/60 dark:bg-slate-900/60 backdrop-blur border-slate-200 dark:border-slate-800">
-          <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-          Realtime (sub-second) telemetry
-        </div>
+      <div
+        className="
+          relative overflow-hidden
+          rounded-[28px] md:rounded-[36px]
+          border border-slate-200/70 dark:border-slate-800
+          px-6 md:px-12 py-14 md:py-20 lg:py-24
+          shadow-[0_14px_48px_-20px_rgba(2,6,23,.25)]
+          bg-white dark:bg-slate-950
+        "
+      >
+        {/* soft background */}
+        <div className="pointer-events-none absolute -top-32 -left-40 h-[420px] w-[420px] rounded-full bg-[#E8F1FF] blur-2xl opacity-80" />
+        <div className="pointer-events-none absolute -bottom-44 -right-48 h-[520px] w-[520px] rounded-full bg-[#ECF8FF] blur-2xl opacity-80" />
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.25]"
+          style={{
+            backgroundImage:
+              'linear-gradient(to right, rgba(2,6,23,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(2,6,23,0.06) 1px, transparent 1px)',
+            backgroundSize: '24px 24px, 24px 24px',
+          }}
+        />
 
-        <h1 className="mt-4 text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.05]">
-          <span className="bg-clip-text text-transparent bg-[linear-gradient(90deg,#0A4FB2_0%,#0F6BDC_45%,#32B0FF_100%)]">
-            Realtime Analytics — Main & Queue Drilldowns
-          </span>
-        </h1>
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          {/* LEFT text */}
+          <div className="lg:col-span-7">
+            <h1 className="text-[40px] md:text-[72px] lg:text-[84px] font-extrabold leading-[1.02] tracking-tight text-slate-900 dark:text-white">
+              <span className="mr-2">Build</span>
+              {/* Autonomy: exact logo blue (solid) */}
+              <span
+                className="bg-clip-text text-transparent"
+                style={{ backgroundImage: `linear-gradient(90deg, ${BRAND_BLUE}, ${BRAND_BLUE})` }}
+              >
+                Autonomy
+              </span>
+            </h1>
 
-        <p className="mt-4 text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-3xl">
-          Sub-second KPIs for voice/chat operations, deep queue drilldowns, and
-          anomaly alerts — purpose-built for AI contact centers.
-        </p>
-
-        <div className="mt-6 flex flex-wrap items-center gap-3">
-          <a
-            href="#highlights"
-            className="rounded-xl px-5 py-3 border border-slate-300/60 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800"
-          >
-            View highlights
-          </a>
-          <a
-            href="#contact"
-            className="rounded-xl px-5 py-3 text-white bg-gradient-to-tr from-sky-600 to-indigo-600 hover:opacity-95 shadow-lg"
-          >
-            Discuss this project
-          </a>
-
-          <div className="ml-auto flex gap-6 text-sm">
-            <div>
-              <div className="text-2xl font-bold">&lt;1s</div>
-              <div className="text-slate-500">P95 refresh</div>
+            {/* rotating second line */}
+            <div className="mt-1 text-[30px] md:text-[56px] lg:text-[64px] font-extrabold text-slate-900 dark:text-white">
+              <WordRotate words={WORDS} className="inline-block" />
             </div>
-            <div>
-              <div className="text-2xl font-bold">10k+/s</div>
-              <div className="text-slate-500">event throughput</div>
+
+            {/* classy copy */}
+            <p className="mt-5 max-w-2xl text-lg md:text-xl text-slate-600 dark:text-slate-400">
+              Science over guesswork. Passion for craft. <strong>Software that pays for itself</strong>—delivered on time,
+              built to scale, and effortless to maintain.
+            </p>
+
+            {/* Primary CTA */}
+            <div className="mt-7">
+              <Link
+                href="/marketing/contact"
+                className="group inline-flex items-center rounded-full pl-5 pr-2 py-2 text-white shadow-sm"
+                style={{ backgroundColor: BRAND_BLUE }}
+              >
+                <span className="text-[15px] font-semibold">Let’s Start Building</span>
+                <span
+                  className="ml-3 grid h-8 w-8 place-items-center rounded-full transition-transform group-hover:translate-x-0.5"
+                  style={{ backgroundColor: BRAND_YELLOW, color: BRAND_BLUE }}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden>
+                    <path
+                      d="M5 12h14M13 5l7 7-7 7"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+              </Link>
+            </div>
+
+            {/* chips row */}
+            <div className="mt-6 flex flex-wrap items-center gap-3 text-sm text-slate-500 dark:text-slate-400">
+              <span>Trusted by teams in</span>
+              {[
+                'Website',
+                'App',
+                'AI Agents',
+                'Data / Analytics',
+                'Cloud Infra',
+                'DevOps / CI-CD',
+                'Integrations',
+                'Consulting',
+              ].map((chip) => (
+                <span
+                  key={chip}
+                  className="inline-flex h-9 items-center rounded-full border border-slate-200 bg-white px-4 text-slate-700 shadow-sm
+                             dark:bg-slate-900 dark:border-slate-800 dark:text-slate-300"
+                >
+                  {chip}
+                </span>
+              ))}
             </div>
           </div>
+
+          {/* RIGHT visual space */}
+          <div className="lg:col-span-5 relative h-[220px] md:h-[280px] lg:h-[320px]">
+            <div className="absolute right-0 top-6 h-56 w-56 md:h-72 md:w-72 rounded-[40px] rotate-6 bg-[#0F6BDC]/10 blur-md" />
+            <div className="absolute right-24 bottom-0 h-40 w-40 md:h-52 md:w-52 rounded-3xl -rotate-6 bg-[#32B0FF]/10 blur-md" />
+          </div>
         </div>
+      </div>
+
+      {/* Section intro */}
+      <header className="space-y-2">
+        <h2 className="text-3xl md:text-4xl font-bold">Built by CloudQor</h2>
+        <p className="text-slate-600 dark:text-slate-400">
+          Click a category to explore related work.
+        </p>
       </header>
 
-      <div className="grid md:grid-cols-12 gap-10">
-        {/* LEFT: narrative + sections */}
-        <div className="md:col-span-7 space-y-8">
-          {/* Highlights */}
-          <div
-            id="highlights"
-            className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 backdrop-blur p-6 shadow-sm"
-          >
-            <h2 className="text-xl font-semibold">Highlights</h2>
-            <ul className="mt-3 space-y-2 list-disc pl-5 text-slate-700 dark:text-slate-300">
-              <li>Streaming ingestion (Kafka/Kinesis) → windowed aggregations.</li>
-              <li>Columnar warehouse for fast slice/dice on billions of rows.</li>
-              <li>Row-level security and team-scoped dashboards.</li>
-              <li>Alerting on SLO breaches and anomalies (Prophet/ADTK/DBSCAN).</li>
-              <li>Embeddable widgets for CRM, supervisor console, and wallboards.</li>
-            </ul>
-          </div>
-
-          {/* Section: Main Dashboard */}
-          <div className="rounded-2xl border border-slate-200 dark:border-slate-800 p-6">
-            <h3 className="text-lg font-semibold mb-3">
-              Realtime Analytics — Main Dashboard
-            </h3>
-            <p className="text-slate-700 dark:text-slate-300 mb-3">
-              A supervisor view for the whole floor, focused on sub-second
-              performance and health.
-            </p>
-            <ul className="space-y-2 list-disc pl-5 text-slate-700 dark:text-slate-300">
-              <li>
-                <strong>KPIs:</strong> Calls/min, Containment, ASR, Sentiment,
-                Cost/Call (all sub-second).
-              </li>
-              <li>
-                <strong>Top Intents</strong> bar chart with trend deltas.
-              </li>
-              <li>
-                <strong>Regions</strong> card showing live load/latency by site.
-              </li>
-              <li>
-                <strong>Timeline</strong> overlay: Calls vs Errors with tooltips.
-              </li>
-            </ul>
-          </div>
-
-          {/* Section: Queue Drilldown */}
-          <div className="rounded-2xl border border-slate-200 dark:border-slate-800 p-6">
-            <h3 className="text-lg font-semibold mb-3">
-              Analytics — Queue Drilldown (Support / Order Status)
-            </h3>
-            <p className="text-slate-700 dark:text-slate-300 mb-3">
-              Deep analytics for a single queue with conversion, quality, and
-              operations views.
-            </p>
-            <ul className="space-y-2 list-disc pl-5 text-slate-700 dark:text-slate-300">
-              <li>
-                <strong>Conversion funnel:</strong> Answered → Authenticated →
-                Intent → Bot Resolved → Handoff.
-              </li>
-              <li>
-                <strong>Sentiment ring</strong> (positive/neutral/negative) with drill to
-                transcripts.
-              </li>
-              <li>
-                <strong>Agent & bot leaderboard</strong> (AHT, CSAT proxy, resolution rate).
-              </li>
-              <li>
-                <strong>Live anomaly alerts</strong> (surge, ASR drop, error spikes).
-              </li>
-            </ul>
-          </div>
-
-          {/* mini gallery */}
-          <div className="rounded-2xl border border-slate-200 dark:border-slate-800 p-4">
-            <div className="mb-2 text-sm text-slate-500">UI preview</div>
-            <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2">
-              {["/images/projects/realtime-analytics-dashboard/cover.jpg", ...GALLERY].map(
-                (src) => (
-                  <div
-                    key={src}
-                    className="relative snap-start shrink-0 w-[320px] h-[220px] rounded-xl overflow-hidden shadow-sm"
-                  >
-                    <Image
-                      src={src}
-                      alt="Realtime analytics UI"
-                      fill
-                      className="object-cover"
-                      sizes="320px"
-                    />
-                  </div>
-                )
-              )}
-            </div>
-          </div>
-        </div>
-
-        {/* RIGHT: Featured image + thumbs */}
-        <aside className="md:col-span-5 md:sticky md:top-24">
-          <div className="p-[2px] rounded-2xl bg-gradient-to-tr from-sky-500 via-blue-600 to-indigo-600 shadow-xl mb-4">
-            <div className="relative aspect-[16/10] rounded-[14px] overflow-hidden bg-slate-50 dark:bg-slate-800">
-              <Image
-                src="/images/projects/realtime-analytics-dashboard/cover.jpg"
-                alt="Realtime Analytics — cover"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 40vw"
-                priority
-              />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-3 gap-3">
-            {GALLERY.map((src) => (
-              <div
-                key={src}
-                className="p-[2px] rounded-xl bg-gradient-to-tr from-slate-200 to-slate-50 dark:from-slate-800 dark:to-slate-900 shadow"
-              >
-                <div className="relative aspect-square rounded-[10px] overflow-hidden">
-                  <Image
-                    src={src}
-                    alt="Realtime Analytics — detail"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 13vw"
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-        </aside>
+      {/* Tabs + filtered grid */}
+      <div id="work">
+        <PortfolioTabs projects={projects} initialTab="All" tabs={TAB_ORDER} />
       </div>
 
-      <div id="contact" className="sr-only" />
+      {/* Reviews wall */}
+      <div className="pt-6 md:pt-10">
+        <ReviewWallCompact />
+      </div>
     </section>
   );
 }

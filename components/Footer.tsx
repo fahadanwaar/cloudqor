@@ -6,7 +6,7 @@ export default function Footer() {
         <div className="flex items-center gap-4">
           <a href="mailto:fahad.anwaar@cloudqor.co" className="hover:underline">fahad.anwaar@cloudqor.co</a>
           <a href="#" className="hover:underline">+923080690447</a>
-          <a href="https://www.linkedin.com/" className="hover:underline">LinkedIn</a>
+          <a href="https://www.linkedin.com/company/109765306/admin/dashboard/" className="hover:underline">LinkedIn</a>
           <a href="/contact" className="hover:underline">Contact</a>
         </div>
       </div>

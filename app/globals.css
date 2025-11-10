@@ -139,3 +139,19 @@ body {
 .dark .hero-aurora { --blob1: 45 212 191; --blob2: 16 185 129; }
 .dark .hero-sunset { --blob1: 251 146 60;  --blob2: 244 63 94;  }
 .dark .hero-midnight { --blob1: 129 140 248; --blob2: 168 85 247; }
+
+
+@keyframes float {
+  0%,100% { transform: translateY(0) }
+  50% { transform: translateY(-8px) }
+}
+@keyframes blob {
+  0%,100% { border-radius: 38% 62% 59% 41% / 41% 39% 61% 59% }
+  33%    { border-radius: 57% 43% 36% 64% / 52% 46% 54% 48% }
+  66%    { border-radius: 41% 59% 68% 32% / 39% 58% 42% 61% }
+}
+
+/* keeps numerals uniform and professional */
+.stats-nums {
+  font-variant-numeric: tabular-nums lining-nums;
+}
