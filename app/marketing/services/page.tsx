@@ -6,6 +6,9 @@ import ServiceCardPro from "@/components/ServiceCardPro";
 import DeepCta from "@/components/DeepCta";
 import TechStacks from "@/components/TechStacks";
 import Methodologies from "@/components/Methodologies";
+import TechCompetency from "@/components/TechCompetency";
+import EngagementModels from "@/components/EngagementModels";
+import MantraHero from "@/components/MantraHero";
 
 export const metadata = {
   title: "Services — CloudQor",
@@ -298,6 +301,21 @@ export default function ServicesPage() {
 
       {/* ========= CTA SECTION ========= */}
       <DeepCta />
+
+
+      <TechCompetency />
+
+      <EngagementModels />
+
+  
+
+
+<MantraHero
+  label="Our Mantra"
+  quote={`Creativity is Intelligence\nHaving Fun.`}
+  author="Albert Einstein"
+/>
+
 
       <div className="h-10" />
     </div>
