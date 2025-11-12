@@ -4,44 +4,48 @@
 import Image from "next/image";
 
 /**
- * Put icons in:
+ * Icons live in:
  *   /public/icon/agile.png
  *   /public/icon/scrum.png
  *
- * This version:
- * - Icon is clipped to a perfect circle (no visible square).
- * - Circle a bit smaller, icon fills nicely.
- * - Row content (icon+title and paragraph) sits between the same two lines.
+ * Changes requested:
+ * - Match Engagement section sizing only (container + fonts + spacing)
+ * - Do NOT change icons or their styling
  */
 
 const BRAND_BLUE = "#0b5fb6";
 
 const TOKENS = {
-  maxW: 1200,          // outer section cap
-  contentW: 1040,      // width used by the row + dividers (inside the lines)
-  iconCircle: 72,      // circle diameter (smaller so it feels tighter)
-  gap: 14,             // space between circle and title
-  title: "text-[32px] leading-[40px] font-semibold text-slate-800",
-  para: "text-[18px] leading-[30px] text-slate-600",
+  // === match Engagement ===
+  maxW: 1040,          // outer container cap
+  contentW: 940,       // row + divider width
+  // ========================
+  iconCircle: 72,      // keep your circle size
+  gap: 20,             // space between circle and title (comfortable)
+  title: "text-[18px] md:text-[22px] font-semibold text-slate-900",
+  para: "text-[14px] md:text-[16px] leading-[1.6] text-slate-600",
 };
 
 export default function Methodologies() {
   return (
     <section className="bg-[#F7FAFC]">
-      <div className="mx-auto px-6 md:px-10 py-14 md:py-20" style={{ maxWidth: TOKENS.maxW }}>
-        {/* Header */}
+      <div
+        className="mx-auto px-4 md:px-6 py-12 md:py-16"
+        style={{ maxWidth: TOKENS.maxW }}
+      >
+        {/* Header (kept; just font sizes aligned with Engagement) */}
         <header className="text-center">
-          <h2 className="font-extrabold tracking-[-0.01em] text-[#0b5fb6] text-[44px] leading-[52px] md:text-[48px] md:leading-[56px]">
+          <h2 className="font-extrabold tracking-[-0.01em] text-[#0b5fb6] text-[28px] sm:text-[34px] md:text-[40px]">
             Methodologies We Support
           </h2>
-          <p className="mx-auto mt-5 max-w-[980px] text-[18px] leading-[28px] text-slate-600">
+          <p className="mx-auto mt-3 max-w-[880px] text-[14px] md:text-[16px] leading-[1.6] text-slate-600">
             Over 300 software projects are enjoying sky-high business results with our
             genius usage of modern software development practices. We value your investments.
           </p>
         </header>
 
-        {/* Rows */}
-        <div className="mt-14 space-y-12">
+        {/* Rows (width/spacing aligned) */}
+        <div className="mt-10 space-y-10">
           <Row title="Agile" iconSrc="/icon/agile.png">
             We employ an iterative and incremental SDLC, breaking large projects into
             manageable series of steps to achieve control and adaptability, delivering
@@ -63,11 +67,11 @@ export default function Methodologies() {
   );
 }
 
-/* ---------------------- Divider (kept same width as rows) ---------------------- */
+/* ---------------------- Divider (same width as rows) ---------------------- */
 function Divider() {
   return (
     <div className="mx-auto w-full" style={{ maxWidth: TOKENS.contentW }}>
-      <div className="h-px w-full bg-slate-200" />
+      <div className="h-px w-full bg-slate-200/80" />
     </div>
   );
 }
@@ -101,7 +105,7 @@ function Row({
   );
 }
 
-/* ---------------------- CircleIcon (clipped, no square edges) ---------------------- */
+/* ---------------------- CircleIcon (unchanged styling, just uses TOKENS sizes) ---------------------- */
 function CircleIcon({ src, alt }: { src: string; alt: string }) {
   const size = TOKENS.iconCircle;
   return (
@@ -112,13 +116,13 @@ function CircleIcon({ src, alt }: { src: string; alt: string }) {
       "
       style={{ width: size, height: size, borderColor: BRAND_BLUE }}
     >
-      {/* Image fills the circle; any square background gets clipped away */}
+      {/* keep your original rendering approach */}
       <Image
         src={src}
         alt={alt}
         fill
         sizes={`${size}px`}
-        className="object-cover" // cover ensures the circle is filled edge-to-edge
+        className="object-cover"
         unoptimized
       />
     </div>
