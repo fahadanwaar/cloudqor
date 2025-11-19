@@ -10,7 +10,7 @@ const linksCenter = [
   { href: '/', label: 'Home' },
   { href: '/dashboard', label: 'Dashboard' },
   { href: '/marketing/portfolio', label: 'Portfolio' },
-  { href: '/marketing/work-with-us', label: 'Work with us' }, 
+  { href: '/marketing/work-with-us', label: 'Work with us' },
   { href: '/marketing/services', label: 'services' },
 ];
 
@@ -26,7 +26,16 @@ export default function Navbar() {
         <div className="grid grid-cols-[auto_1fr_auto] items-center gap-4 h-20">
           {/* LEFT: logo */}
           <Link href="/" className="flex items-center gap-2 font-semibold">
-            <Image src="/cloudqor-icon.png" alt="CloudQor" width={36} height={36} />
+            {/* yahan sirf shape change ki hai */}
+            <span className="relative h-10 w-10 rounded-2xl overflow-hidden shadow-lg">
+              <Image
+                src="/cloudqor-icon.png"
+                alt="CloudQor"
+                fill
+                className="object-cover transition-transform duration-300 hover:-translate-y-[1px] hover:scale-[1.03]"
+                priority
+              />
+            </span>
             <span className="text-xl">CloudQor</span>
           </Link>
 
@@ -56,7 +65,9 @@ export default function Navbar() {
 
           {/* RIGHT: Contact Us (shared CTA) */}
           <div className="justify-self-end">
-            <PrimaryCta href="/marketing/contact" label="Contact Us" />
+            {/* <PrimaryCta href="/marketing/contact" label="Contact Us" /> */}
+            <PrimaryCta href="/marketing/contact" label="Contact Us" size="sm" />
+
           </div>
         </div>
       </div>

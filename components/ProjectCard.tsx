@@ -1,5 +1,5 @@
 // components/ProjectCard.tsx
-import Image, { type StaticImageData } from "next/image";
+import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/lib/projects";
 
@@ -10,13 +10,9 @@ type Props = {
 };
 
 export default function ProjectCard({ project, index }: Props) {
-  const cover = project.image as StaticImageData | string | undefined;
+  const cover = project.image; // string path from /public
   const isInternal = project.link?.startsWith("/");
   const priority = typeof index === "number" ? index < 3 : false; // top 3 get priority
-
-  // Blur placeholder works automatically for StaticImageData imports.
-  const canBlur =
-    typeof cover === "object" && cover !== null && "src" in cover;
 
   return (
     <article
@@ -53,7 +49,6 @@ export default function ProjectCard({ project, index }: Props) {
             fill
             sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 33vw"
             className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-            placeholder={canBlur ? "blur" : undefined}
             priority={priority}
           />
         ) : (

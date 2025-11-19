@@ -6,9 +6,9 @@ type Stat = { value: string; suffix?: string; label: string };
 const STATS: Stat[] = [
   { value: "150", suffix: "+", label: "Full Stack Developers" },
   { value: "300", suffix: "+", label: "Solutions Delivered\nSuccessfully" },
-  { value: "200", suffix: "+", label: "Tech Stacks" }, 
-  { value: "98",  suffix: "%", label: "Customer Happiness\nIndex" },
-  { value: "3/4",            label: "Customers Stay For\nFuture Projects" },
+  { value: "200", suffix: "+", label: "Tech Stacks" },
+  { value: "98", suffix: "%", label: "Customer Happiness\nIndex" },
+  { value: "3/4", label: "Customers Stay For\nFuture Projects" },
 ];
 
 const BRAND_BLUE = "#0B49B6";
@@ -18,7 +18,7 @@ const STRIP_BG = "#F6F9FC";
 export default function StatsStrip() {
   return (
     <section
-      className="relative overflow-hidden py-16 md:py-24"
+      className="relative overflow-hidden py-10 md:py-16"
       style={{ backgroundColor: STRIP_BG }}
     >
       {/* very subtle background halos */}
@@ -44,7 +44,7 @@ export default function StatsStrip() {
           eyebrow="By the numbers"
           title={<>Achievements Through The Years…</>}
           subtitle="Outcomes we consistently deliver for clients across products and platforms."
-          className="mb-8 md:mb-12"
+          className="mb-6 md:mb-8"
           accentColor={BRAND_BLUE}
           accentBarColor={BRAND_YELLOW}
         />
@@ -52,11 +52,14 @@ export default function StatsStrip() {
         {/* Flat grid with thin separators only */}
         <div className="grid grid-cols-2 md:grid-cols-5 divide-x divide-slate-200">
           {STATS.map((s, i) => (
-            <div key={i} className="px-6 md:px-8 py-12 md:py-16 text-center">
-              {/* Numbers – crisp & professional */}
+            <div
+              key={i}
+              className="px-4 md:px-6 py-6 md:py-8 text-center"
+            >
+              {/* Numbers – crisp & professional, but smaller */}
               <div
                 className="leading-none font-extrabold text-slate-900 tracking-tight tabular-nums lining-nums"
-                style={{ fontSize: "clamp(38px,6.4vw,60px)" }}
+                style={{ fontSize: "clamp(30px,4.8vw,46px)" }}
               >
                 {s.value.includes("/") ? (
                   <>
@@ -68,13 +71,13 @@ export default function StatsStrip() {
                   <span>{s.value}</span>
                 )}
                 {s.suffix ? (
-                  <span className="pl-2 text-red-500">{s.suffix}</span>
+                  <span className="pl-1.5 text-red-500">{s.suffix}</span>
                 ) : null}
               </div>
 
               <div
-                className="mt-4 text-slate-600 whitespace-pre-line"
-                style={{ fontSize: "clamp(14px,2vw,16px)", lineHeight: 1.35 }}
+                className="mt-3 text-slate-600 whitespace-pre-line"
+                style={{ fontSize: "clamp(13px,1.8vw,15px)", lineHeight: 1.35 }}
               >
                 {s.label}
               </div>
@@ -82,8 +85,8 @@ export default function StatsStrip() {
           ))}
         </div>
 
-        {/* extra space below strip */}
-        <div className="mt-10 md:mt-14" />
+        {/* slightly tighter extra space below strip */}
+        <div className="mt-8 md:mt-10" />
       </div>
     </section>
   );
